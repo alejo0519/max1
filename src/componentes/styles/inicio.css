@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.fondo {
+    background: black;
+}
+
+.letra {
+    color: rgb(245, 245, 245);
+    font-size: 80px;
+    margin-left: 2%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.fondonav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;

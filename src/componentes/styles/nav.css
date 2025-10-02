@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.alin {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 15px;
+    margin-right: 1%;
+    color: aliceblue;
+    font-size: 20px;
+}
+
+.text {
+    color: aliceblue;
+    font-size: 20px;
+}
