@@ -1,0 +1,27 @@
+/* ==================================== */
+/* ACCESORIOS.CSS */
+/* Estilos para el componente Accesorios.jsx */
+/* ==================================== */
+.accesorios-page-container {
+    padding: 60px 5%;
+    min-height: 80vh;
+    background-color: var(--color-background-light);
+}
+
+.accesorios-page-container .section-title {
+    /* Reutiliza el estilo de inicio.css para el título de la sección */
+    font-size: 2.2rem;
+    color: var(--color-text-dark);
+    text-align: center;
+    margin-bottom: 50px;
+    padding-top: 20px;
+}
+
+/* El product-grid y product-card pueden ser los mismos que en inicio.css para consistencia */
+/* Si no estás usando módulos CSS y los estilos son globales, ya están definidos en inicio.css.
+   Si usas módulos, deberías importar los estilos del grid aquí. */
+/* Si usas los nombres de clase globales de inicio.css: */
+
+/* .product-grid { ... } */
+/* .product-card { ... } */
+/* .buy-button { ... } */

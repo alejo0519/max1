@@ -1,23 +1,93 @@
-.container > div {
-  cursor: pointer;
+/* Contenedor principal del carrusel */
+.carrusel-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #007bff, #6c757d);
+  overflow: hidden;
+}
+
+/* Carrusel */
+.carrusel {
+  position: relative;
+  width: 90%;
+  max-width: 800px;
+  height: 50vh;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Elementos del carrusel */
+.carrusel-item {
   position: absolute;
+  width: 60%;
+  height: 80%;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+.carrusel-item img {
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-weight: 800;
-  font-size: 25em;
-  will-change: transform, opacity;
-  text-shadow: 0px 2px 40px #00000020, 0px 2px 5px #00000030;
-  -webkit-user-select: none;
-  user-select: none;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-.imagenes{
-  margin-top: 2%;
+
+/* Elemento activo (en el centro) */
+.carrusel-item.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
+}
+
+/* Elemento previo (a la izquierda) */
+.carrusel-item.prev {
+  opacity: 0.5;
+  transform: translateX(-120%) scale(0.8);
+  z-index: 1;
+  filter: blur(2px);
+}
+
+/* Elemento siguiente (a la derecha) */
+.carrusel-item.next {
+  opacity: 0.5;
+  transform: translateX(120%) scale(0.8);
+  z-index: 1;
+  filter: blur(2px);
+}
+
+/* Indicadores del carrusel */
+.carrusel-indicators {
+  position: absolute;
+  bottom: 10px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  border-radius: 25%;
+  gap: 10px;
+  width: 100%;
+}
+
+.carrusel-indicators .indicator {
+  width: 10px;
+  height: 10px;
+  background-color: #ccc;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.carrusel-indicators .indicator.active {
+  background-color: #007bff;
 }

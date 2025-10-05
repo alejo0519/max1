@@ -1,21 +1,73 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
+/* ==================================== */
+/* NAV.CSS */
+/* Estilos para el componente nav.jsx */
+/* ==================================== */
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background-color: var(--color-background-dark);
+  color: var(--color-text-light);
+  position: sticky; 
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
-.alin {
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    gap: 15px;
-    margin-right: 1%;
-    color: aliceblue;
-    font-size: 20px;
+.nav-logo {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--color-primary); /* El logo siempre debe destacar */
+  letter-spacing: 2px;
 }
 
-.text {
-    color: aliceblue;
-    font-size: 20px;
+.nav-links-wrapper {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-utility-links {
+  display: flex;
+  gap: 15px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  color: var(--color-text-light);
+}
+
+/* Efecto hover: cambio sutil de color de fondo y color de texto */
+.nav-link:hover {
+  color: var(--color-primary);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link span {
+  /* El texto en móvil podría ocultarse si el espacio es limitado */
+  display: inline-block;
+}
+
+/* Estilo específico para los iconos de utilidad (carrito/usuario) */
+.primary-icon {
+  font-size: 1.2rem;
+}
+
+/* Media Query para responsividad en la navegación */
+@media (max-width: 768px) {
+  .nav-container {
+      padding: 10px 20px;
+  }
+  .nav-links-wrapper {
+      display: none; /* Oculta los enlaces principales en móvil para simplificar */
+  }
+  .nav-link span {
+      display: none; /* Muestra solo los iconos en los enlaces de utilidad */
+  }
 }

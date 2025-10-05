@@ -1,45 +1,51 @@
-import React, { useState, useEffect, use } from 'react'
-import { useTransition, animated, useSpringRef } from '@react-spring/web'
+import React, { useState, useEffect } from 'react';
+import './styles/carrusel.css'; 
 
-import './styles/module.css'
-const joma=<img src="https://i.imgur.com/LAUQGgJ_d.jpeg?maxwidth=520&shape=thumb&fidelity=high" alt="joma" />
-const balon=<img src="https://i.imgur.com/kozGFCq_d.jpeg?maxwidth=520&shape=thumb&fidelity=high" alt="balon" />
-const canilleras=<img src="https://i.imgur.com/YnnkHz7_d.jpeg?maxwidth=520&shape=thumb&fidelity=high" alt="canilleras" />
+const images = [
+    { url: "https://imgur.com/6lf9BIw.jpg", caption: "" },
+    { url: "https://imgur.com/BEfNTw6.jpg", caption: "" },
+    { url: "https://imgur.com/nfwECFY.jpg", caption: "" },
+];
 
-const pages = [
-  ({ style }) => <animated.div style={{ ...style, background: 'lightpink' }}>{joma}</animated.div>,
-  ({ style }) => <animated.div style={{ ...style, background: 'lightblue' }}>{balon}</animated.div>,
-  ({ style }) => <animated.div style={{ ...style, background: 'lightgreen' }}>{canilleras}</animated.div>,
-]
+export default function Carrusel() { 
+    const [index, setIndex] = useState(0);
 
-export default function Carrusel() {
-  const [index, setIndex] = useState(0)
-  const transRef = useSpringRef()
-  const transitions = useTransition(index, {
-    ref: transRef,
-    keys: null,
-    from:  { opacity: 0, transform: 'translate3d(100%,0,0) '},
-    enter: { opacity: 1,   transform: 'translate3d(0%,0,0) '},
-    leave: { opacity: 0, transform: 'translate3d(-50%,0,0) '},
-    config: { duration: 800 },
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setIndex((prevIndex) => (prevIndex + 1) % images.length);
+        }, 4000); 
+        return () => clearInterval(interval);
+    }, []);
 
-})
-  useEffect(() => {
-    transRef.start()
-  }, [index,transRef])
+    const goToSlide = (slideIndex) => setIndex(slideIndex);
+    
+    return (
+        <div className="carrusel-container">
+            <div className="carrusel">
+                {images.map((item, i) => {
+                    const isActive = i === index;
 
-  useEffect(() => {
-    const intervalo = setInterval(()=>{
-      setIndex((prev) => (prev + 1) % pages.length)
-    }, 2000)
-    return () => clearInterval(intervalo)
-  },[])
-  return (
-    <div className='imagenes' >
-      {transitions((style, i) => {
-        const Page = pages[i]
-        return <Page style={style} />
-      })}
-    </div>
-  )
+                    return (
+                        <div key={i} className={`carrusel-item ${isActive ? "active" : ""}`}>
+                            <img src={item.url} alt={`Slide ${i}`} />
+                            <div className="carrusel-caption">
+                                <h2>{item.caption}</h2>
+                                <button className="carrusel-shop-btn">Descubre Ahora</button>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+            
+            <div className="carrusel-indicators">
+                {images.map((_, i) => (
+                    <span
+                        key={i}
+                        className={`indicator ${i === index ? 'active' : ''}`}
+                        onClick={() => goToSlide(i)}
+                    ></span>
+                ))}
+            </div>
+        </div>
+    );
 }

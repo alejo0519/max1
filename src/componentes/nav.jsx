@@ -1,16 +1,27 @@
-import { Link } from "react-router-dom"
-import { VscBookmark } from "react-icons/vsc"
-import { IoAccessibility } from "react-icons/io5"
-import './styles/nav.css'
-const Nav=()=>(
-    <div className="aling">
-        <Link ><p className="text"><VscBookmark />Inicio</p></Link>
-        <Link><p className="text"><IoAccessibility />Ropa</p></Link>
-        <Link to="/Accesorio"><p className="text">Accesorio</p></Link>
-        <Link><p className="text">Carrito</p></Link>
-        <Link><p className="text">Ubicacion</p></Link>
-        <Link><p className="text">Pedido</p></Link>
-        <Link to='/R_I'><p className="text">Registro/Inicio</p></Link>
-    </div>
-)
-export default Nav
+import { Link } from "react-router-dom";
+
+import { FaHome, FaTshirt, FaShoppingCart, FaUser, FaMapMarkerAlt, FaBox, FaDumbbell } from "react-icons/fa"; 
+import './styles/nav.css';
+
+const Nav = () => (
+    <nav className="nav-container">
+       
+        <Link to="/" className="nav-logo">MaxDep</Link> 
+
+        <div className="nav-links-wrapper">
+            
+            <Link to="/" className="nav-link"><FaHome /><span>Inicio</span></Link>
+            <Link to="/accesorio" className="nav-link"><FaDumbbell /><span>Accesorios</span></Link>
+            <Link to="/ubicacion" className="nav-link"><FaMapMarkerAlt /><span>Ubicación</span></Link>
+            <Link to="/pedido" className="nav-link"><FaBox /><span>Pedido</span></Link>
+        </div>
+
+        <div className="nav-utility-links">
+            <Link to="/carrito" className="nav-link primary-icon"><FaShoppingCart /></Link>
+           
+            <Link to='/registro' className="nav-link primary-icon"><FaUser /><span>Registro/Acceso</span></Link> 
+        </div>
+    </nav>
+);
+
+export default Nav;
